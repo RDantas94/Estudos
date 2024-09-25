@@ -1,2 +1,2 @@
-# Estudos/studies
+# Estudos
  repositório para exercícios e cursos variados
