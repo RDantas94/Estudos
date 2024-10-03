@@ -8,10 +8,24 @@ let valorTotal = 1400;
 function adicionar() {
     const selectProduto = document.getElementById("produto");
     const quantidadeInput = document.getElementById("quantidade");
+    const mensagemErro = document.getElementById("mensagem-erro"); // Elemento para exibir mensagens de erro
 
     // Pega o valor do produto selecionado e a quantidade
     const produtoSelecionado = selectProduto.value;
     const quantidade = parseInt(quantidadeInput.value);
+
+    // Validações
+    if (!produtoSelecionado) {
+        mensagemErro.textContent = "Erro: Nenhum produto selecionado.";
+        return; // Interrompe a função se o produto for inválido
+    }
+    if (isNaN(quantidade) || quantidade <= 0) {
+        mensagemErro.textContent = "Erro: Insira uma quantidade válida maior que zero.";
+        return; // Interrompe a função se a quantidade for inválida
+    }
+
+    // Se passar nas validações, limpa a mensagem de erro
+    mensagemErro.textContent = "";
 
     // Extraindo o nome do produto e o valor
     const [nomeProduto, precoProduto] = produtoSelecionado.split(" - R$");
